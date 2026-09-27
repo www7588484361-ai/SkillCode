@@ -2,9 +2,17 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@nexor009/skillcode",
   "version": "1.0.0-beta.6",
-  "description": "AI coding agent built for the terminal and pair-programming",
+  "description": "The AI coding agent that actually does the work. Controls browsers, inspects your code, and writes tested software right inside your terminal.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/www7588484361-ai/SkillCode.git"
+  },
+  "homepage": "https://github.com/www7588484361-ai/SkillCode#readme",
+  "bugs": {
+    "url": "https://github.com/www7588484361-ai/SkillCode/issues"
+  },
   "private": false,
   "publishConfig": {
     "access": "public"
