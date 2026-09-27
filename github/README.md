@@ -1,45 +1,45 @@
-# opencode GitHub Action
+# SkillCode GitHub Action
 
-A GitHub Action that integrates [opencode](https://opencode.ai) directly into your GitHub workflow.
+A GitHub Action that integrates [SkillCode](https://github.com/www7588484361-ai/SkillCode) directly into your GitHub workflow.
 
-Mention `/opencode` in your comment, and opencode will execute tasks within your GitHub Actions runner.
+Mention `/skillcode` in your comment, and SkillCode will execute tasks within your GitHub Actions runner.
 
 ## Features
 
 #### Explain an issue
 
-Leave the following comment on a GitHub issue. `opencode` will read the entire thread, including all comments, and reply with a clear explanation.
+Leave the following comment on a GitHub issue. `skillcode` will read the entire thread, including all comments, and reply with a clear explanation.
 
 ```
-/opencode explain this issue
+/skillcode explain this issue
 ```
 
 #### Fix an issue
 
-Leave the following comment on a GitHub issue. opencode will create a new branch, implement the changes, and open a PR with the changes.
+Leave the following comment on a GitHub issue. SkillCode will create a new branch, implement the changes, and open a PR with the changes.
 
 ```
-/opencode fix this
+/skillcode fix this
 ```
 
 #### Review PRs and make changes
 
-Leave the following comment on a GitHub PR. opencode will implement the requested change and commit it to the same PR.
+Leave the following comment on a GitHub PR. SkillCode will implement the requested change and commit it to the same PR.
 
 ```
-Delete the attachment from S3 when the note is removed /oc
+Delete the attachment from S3 when the note is removed /skillcode
 ```
 
 #### Review specific code lines
 
-Leave a comment directly on code lines in the PR's "Files" tab. opencode will automatically detect the file, line numbers, and diff context to provide precise responses.
+Leave a comment directly on code lines in the PR's "Files" tab. SkillCode will automatically detect the file, line numbers, and diff context to provide precise responses.
 
 ```
 [Comment on specific lines in Files tab]
-/oc add error handling here
+/skillcode add error handling here
 ```
 
-When commenting on specific lines, opencode receives:
+When commenting on specific lines, SkillCode receives:
 
 - The exact file being reviewed
 - The specific lines of code
@@ -53,18 +53,18 @@ This allows for more targeted requests without needing to specify file paths or 
 Run the following command in the terminal from your GitHub repo:
 
 ```bash
-opencode github install
+skillcode github install
 ```
 
 This will walk you through installing the GitHub app, creating the workflow, and setting up secrets.
 
 ### Manual Setup
 
-1. Install the GitHub app https://github.com/apps/opencode-agent. Make sure it is installed on the target repository.
-2. Add the following workflow file to `.github/workflows/opencode.yml` in your repo. Set the appropriate `model` and required API keys in `env`.
+1. Install the GitHub app. Make sure it is installed on the target repository.
+2. Add the following workflow file to `.github/workflows/skillcode.yml` in your repo. Set the appropriate `model` and required API keys in `env`.
 
    ```yml
-   name: opencode
+   name: skillcode
 
    on:
      issue_comment:
@@ -73,10 +73,9 @@ This will walk you through installing the GitHub app, creating the workflow, and
        types: [created]
 
    jobs:
-     opencode:
+     skillcode:
        if: |
-         contains(github.event.comment.body, '/oc') ||
-         contains(github.event.comment.body, '/opencode')
+         contains(github.event.comment.body, '/skillcode')
        runs-on: ubuntu-latest
        permissions:
          id-token: write
@@ -87,21 +86,21 @@ This will walk you through installing the GitHub app, creating the workflow, and
               fetch-depth: 1
               persist-credentials: false
 
-          - name: Run opencode
-           uses: anomalyco/opencode/github@latest
-           env:
-             ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           with:
-             model: anthropic/claude-sonnet-4-20250514
-             use_github_token: true
+          - name: Run skillcode
+            uses: www7588484361-ai/SkillCode/github@latest
+            env:
+              ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              model: anthropic/claude-sonnet-4-20250514
+              use_github_token: true
    ```
 
 3. Store the API keys in secrets. In your organization or project **settings**, expand **Secrets and variables** on the left and select **Actions**. Add the required API keys.
 
 ## Support
 
-This is an early release. If you encounter issues or have feedback, please create an issue at https://github.com/anomalyco/opencode/issues.
+If you encounter issues or have feedback, please create an issue at https://github.com/www7588484361-ai/SkillCode/issues.
 
 ## Development
 

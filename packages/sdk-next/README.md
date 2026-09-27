@@ -1,6 +1,6 @@
 # @spacecode/sdk-next
 
-Effect-native scoped SpaceCode host for in-process applications. This transitional package will replace the existing generated `@spacecode/sdk` after its consumers migrate.
+Effect-native scoped SkillCode host for in-process applications. This transitional package will replace the existing generated `@spacecode/sdk` after its consumers migrate.
 
 The SDK executes Server's assembled HTTP router in memory. It opens no listener and performs no network I/O, while preserving the same routing, middleware, handlers, codecs, and errors as the network client.
 

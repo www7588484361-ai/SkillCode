@@ -129,13 +129,13 @@ async function showRemovalSummary(targets: RemovalTargets, method: Installation.
 
   if (method !== "curl" && method !== "unknown") {
     const cmds: Record<string, string> = {
-      npm: "npm uninstall -g spacecode",
-      pnpm: "pnpm uninstall -g spacecode",
-      bun: "bun remove -g spacecode",
-      yarn: "yarn global remove spacecode",
-      brew: "brew uninstall spacecode",
-      choco: "choco uninstall spacecode",
-      scoop: "scoop uninstall spacecode",
+      npm: "npm uninstall -g @nexor009/skillcode",
+      pnpm: "pnpm uninstall -g @nexor009/skillcode",
+      bun: "bun remove -g @nexor009/skillcode",
+      yarn: "yarn global remove @nexor009/skillcode",
+      brew: "brew uninstall skillcode",
+      choco: "choco uninstall skillcode",
+      scoop: "scoop uninstall skillcode",
     }
     prompts.log.info(`  ✓ Package: ${cmds[method] || method}`)
   }
@@ -180,19 +180,19 @@ async function executeUninstall(method: Installation.Method, targets: RemovalTar
 
   if (method !== "curl" && method !== "unknown") {
     const cmds: Record<string, string[]> = {
-      npm: ["npm", "uninstall", "-g", "spacecode"],
-      pnpm: ["pnpm", "uninstall", "-g", "spacecode"],
-      bun: ["bun", "remove", "-g", "spacecode"],
-      yarn: ["yarn", "global", "remove", "spacecode"],
-      brew: ["brew", "uninstall", "spacecode"],
-      choco: ["choco", "uninstall", "spacecode"],
-      scoop: ["scoop", "uninstall", "spacecode"],
+      npm: ["npm", "uninstall", "-g", "@nexor009/skillcode"],
+      pnpm: ["pnpm", "uninstall", "-g", "@nexor009/skillcode"],
+      bun: ["bun", "remove", "-g", "@nexor009/skillcode"],
+      yarn: ["yarn", "global", "remove", "@nexor009/skillcode"],
+      brew: ["brew", "uninstall", "skillcode"],
+      choco: ["choco", "uninstall", "skillcode"],
+      scoop: ["scoop", "uninstall", "skillcode"],
     }
 
     const cmd = cmds[method]
     if (cmd) {
       spinner.start(`Running ${cmd.join(" ")}...`)
-      const result = await Process.run(method === "choco" ? ["choco", "uninstall", "spacecode", "-y", "-r"] : cmd, {
+      const result = await Process.run(method === "choco" ? ["choco", "uninstall", "skillcode", "-y", "-r"] : cmd, {
         nothrow: true,
       })
       if (result.code !== 0) {
@@ -215,8 +215,8 @@ async function executeUninstall(method: Installation.Method, targets: RemovalTar
     prompts.log.info(`  rm "${targets.binary}"`)
 
     const binDir = path.dirname(targets.binary)
-    // SpaceCode rebrand: clean up both the new and legacy install dirs.
-    if (binDir.includes(".spacecode") || binDir.includes(".opencode")) {
+    // SkillCode rebrand: clean up new and legacy install dirs.
+    if (binDir.includes(".skillcode") || binDir.includes(".spacecode") || binDir.includes(".opencode")) {
       prompts.log.info(`  rmdir "${binDir}" 2>/dev/null`)
     }
   }
@@ -267,10 +267,12 @@ async function getShellConfigFile(): Promise<string | null> {
     if (!exists) continue
 
     const content = await Filesystem.readText(file).catch(() => "")
-    // SpaceCode rebrand: match both the new and legacy shell markers/paths.
+    // SkillCode rebrand: match both the new and legacy shell markers/paths.
     if (
+      content.includes("# skillcode") ||
       content.includes("# spacecode") ||
       content.includes("# opencode") ||
+      content.includes(".skillcode/bin") ||
       content.includes(".spacecode/bin") ||
       content.includes(".opencode/bin")
     ) {
@@ -291,7 +293,7 @@ async function cleanShellConfig(file: string) {
   for (const line of lines) {
     const trimmed = line.trim()
 
-    if (trimmed === "# spacecode" || trimmed === "# opencode") {
+    if (trimmed === "# skillcode" || trimmed === "# spacecode" || trimmed === "# opencode") {
       skip = true
       continue
     }
@@ -299,6 +301,7 @@ async function cleanShellConfig(file: string) {
     if (skip) {
       skip = false
       if (
+        trimmed.includes(".skillcode/bin") ||
         trimmed.includes(".spacecode/bin") ||
         trimmed.includes(".opencode/bin") ||
         trimmed.includes("fish_add_path")
@@ -309,8 +312,8 @@ async function cleanShellConfig(file: string) {
 
     if (
       (trimmed.startsWith("export PATH=") &&
-        (trimmed.includes(".spacecode/bin") || trimmed.includes(".opencode/bin"))) ||
-      (trimmed.startsWith("fish_add_path") && (trimmed.includes(".spacecode") || trimmed.includes(".opencode")))
+        (trimmed.includes(".skillcode/bin") || trimmed.includes(".spacecode/bin") || trimmed.includes(".opencode/bin"))) ||
+      (trimmed.startsWith("fish_add_path") && (trimmed.includes(".skillcode") || trimmed.includes(".spacecode") || trimmed.includes(".opencode")))
     ) {
       continue
     }

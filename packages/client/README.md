@@ -1,6 +1,6 @@
 # @spacecode/client
 
-Private generation target for clients derived directly from SpaceCode's authoritative Effect `HttpApi`.
+Private generation target for clients derived directly from SkillCode's authoritative Effect `HttpApi`.
 
 ## Entrypoints
 
@@ -18,7 +18,7 @@ Effect consumers construct canonical decoded inputs:
 ```ts
 import { AbsolutePath, Location, SpaceCode, Prompt } from "@spacecode/client/effect"
 
-const client = yield * SpaceCode.make({ baseUrl: "https://opencode.example" })
+const client = yield * SpaceCode.make({ baseUrl: "https://skillcode.example" })
 yield *
   client.sessions.create({
     location: Location.Ref.make({ directory: AbsolutePath.make("/workspace") }),

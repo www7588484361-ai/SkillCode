@@ -1,6 +1,6 @@
-# SpaceCode Desktop
+# SkillCode Desktop
 
-The SpaceCode Desktop app, built with Electron.
+The SkillCode Desktop app, built with Electron.
 
 ## Development
 

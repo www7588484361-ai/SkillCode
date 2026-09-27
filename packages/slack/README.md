@@ -1,6 +1,6 @@
-# @spacecode/slack
+# @skillcode/slack
 
-Slack bot integration for spacecode that creates threaded conversations.
+Slack bot integration for SkillCode that creates threaded conversations.
 
 ## Setup
 
@@ -24,4 +24,4 @@ Slack bot integration for spacecode that creates threaded conversations.
 bun dev
 ```
 
-The bot will respond to messages in channels where it's added, creating separate spacecode sessions for each thread.
+The bot will respond to messages in channels where it's added, creating separate SkillCode sessions for each thread.

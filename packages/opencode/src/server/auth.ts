@@ -15,14 +15,16 @@ export type DecodedCredentials = {
 }
 
 export class Config extends ConfigService.Service<Config>()("@spacecode/ServerAuthConfig", {
-  // SpaceCode rebrand: SPACECODE_* preferred, legacy OPENCODE_* honored.
-  password: EffectConfig.string("SPACECODE_SERVER_PASSWORD").pipe(
+  // SkillCode rebrand: SKILLCODE_* preferred, legacy SPACECODE_* / OPENCODE_* honored.
+  password: EffectConfig.string("SKILLCODE_SERVER_PASSWORD").pipe(
+    EffectConfig.orElse(() => EffectConfig.string("SPACECODE_SERVER_PASSWORD")),
     EffectConfig.orElse(() => EffectConfig.string("OPENCODE_SERVER_PASSWORD")),
     EffectConfig.option,
   ),
-  username: EffectConfig.string("SPACECODE_SERVER_USERNAME").pipe(
+  username: EffectConfig.string("SKILLCODE_SERVER_USERNAME").pipe(
+    EffectConfig.orElse(() => EffectConfig.string("SPACECODE_SERVER_USERNAME")),
     EffectConfig.orElse(() => EffectConfig.string("OPENCODE_SERVER_USERNAME")),
-    EffectConfig.withDefault("spacecode"),
+    EffectConfig.withDefault("skillcode"),
   ),
 }) {}
 
@@ -41,10 +43,10 @@ export function authorized(credentials: DecodedCredentials, config: Info) {
 }
 
 export function header(credentials?: Credentials) {
-  const password = credentials?.password ?? Flag.SPACECODE_SERVER_PASSWORD
+  const password = credentials?.password ?? process.env.SKILLCODE_SERVER_PASSWORD ?? Flag.SPACECODE_SERVER_PASSWORD
   if (!password) return undefined
 
-  const username = credentials?.username ?? Flag.SPACECODE_SERVER_USERNAME ?? "spacecode"
+  const username = credentials?.username ?? process.env.SKILLCODE_SERVER_USERNAME ?? Flag.SPACECODE_SERVER_USERNAME ?? "skillcode"
   return `Basic ${Buffer.from(`${username}:${password}`).toString("base64")}`
 }
 

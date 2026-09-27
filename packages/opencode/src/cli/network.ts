@@ -21,8 +21,8 @@ const options = {
   },
   "mdns-domain": {
     type: "string" as const,
-    describe: "custom domain name for mDNS service (default: spacecode.local)",
-    default: "spacecode.local",
+    describe: "custom domain name for mDNS service (default: skillcode.local)",
+    default: "skillcode.local",
   },
   cors: {
     type: "string" as const,

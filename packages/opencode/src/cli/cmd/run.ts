@@ -194,12 +194,12 @@ export const RunCommand = effectCmd({
       .option("password", {
         alias: ["p"],
         type: "string",
-        describe: "basic auth password (defaults to SPACECODE_SERVER_PASSWORD)",
+        describe: "basic auth password (defaults to SKILLCODE_SERVER_PASSWORD)",
       })
       .option("username", {
         alias: ["u"],
         type: "string",
-        describe: "basic auth username (defaults to SPACECODE_SERVER_USERNAME or 'spacecode')",
+        describe: "basic auth username (defaults to SKILLCODE_SERVER_USERNAME or 'skillcode')",
       })
       .option("dir", {
         type: "string",

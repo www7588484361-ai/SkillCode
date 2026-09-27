@@ -1,15 +1,26 @@
-# js
+# @nexor009/skillcode
 
-To install dependencies:
+The AI coding agent that actually does the work. Controls browsers, inspects your code, and writes tested software right inside your terminal.
+
+## Installation
+
+```bash
+npm install -g @nexor009/skillcode
+```
+
+## Usage
+
+```bash
+skillcode
+```
+
+## Development
 
 ```bash
 bun install
+bun dev
 ```
 
-To run:
+## License
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.2.12. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+MIT © [SkillCode Contributors](https://github.com/www7588484361-ai/SkillCode)

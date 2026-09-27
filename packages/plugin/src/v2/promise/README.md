@@ -1,8 +1,8 @@
-# SpaceCode V2 Promise Plugin API
+# SkillCode V2 Promise Plugin API
 
 The Promise plugin API is the async/await equivalent of `@spacecode/plugin/v2/effect`. It grants plugins the same two in-process capabilities:
 
-- `hook` installs behavior at an SpaceCode extension point.
+- `hook` installs behavior at a SkillCode extension point.
 - `reload` reruns every transform hook for a stateful domain.
 
 The only difference from the Effect API is the async boundary: hook callbacks, hook registration, `reload`, and `Registration.dispose` use Promises instead of Effects.

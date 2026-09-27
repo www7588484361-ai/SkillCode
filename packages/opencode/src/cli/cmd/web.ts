@@ -51,8 +51,9 @@ export const WebCommand = effectCmd({
       return
     }
     const { Server } = yield* Effect.promise(() => import("../../server/server"))
-    if (!Flag.SPACECODE_SERVER_PASSWORD) {
-      UI.println(UI.Style.TEXT_WARNING_BOLD + "!  SPACECODE_SERVER_PASSWORD is not set; server is unsecured.")
+    const password = process.env.SKILLCODE_SERVER_PASSWORD ?? Flag.SPACECODE_SERVER_PASSWORD
+    if (!password) {
+      UI.println(UI.Style.TEXT_WARNING_BOLD + "!  SKILLCODE_SERVER_PASSWORD is not set; server is unsecured.")
     }
     const opts = yield* resolveNetworkOptions(args)
     const server = yield* Effect.promise(() => Server.listen(opts))
