@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SpaceCode
+Exec=/opt/SpaceCode/ai.spacecode.desktop %U
+Terminal=false
+Type=Application
+Icon=ai.spacecode.desktop
+StartupWMClass=ai.spacecode.desktop
+NoDisplay=true
+Comment=Open source AI coding agent
+Categories=Development;
