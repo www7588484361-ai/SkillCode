@@ -4,7 +4,7 @@ A Visual Studio Code extension that integrates [SkillCode](https://github.com/ww
 
 ## Prerequisites
 
-This extension requires the [SkillCode CLI](https://github.com/www7588484361-ai/SkillCode) to be installed on your system (`npm install -g @nexor009/skillcode`).
+This extension requires the [SkillCode CLI](https://github.com/www7588484361-ai/SkillCode) to be installed on your system (`npm install -g @nexor009/skillcode@1.0.0-beta.7`).
 
 ## Features
 

@@ -21,7 +21,13 @@ Controls browsers, inspects your code, and writes tested software right inside y
 Install SkillCode globally via npm:
 
 ```bash
-npm install -g @nexor009/skillcode
+npm install -g @nexor009/skillcode@1.0.0-beta.7
+```
+
+Or run directly without installing:
+
+```bash
+npx @nexor009/skillcode@1.0.0-beta.7
 ```
 
 Navigate to any project directory and launch the cockpit:

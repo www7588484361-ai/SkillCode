@@ -5,7 +5,13 @@ The AI coding agent that actually does the work. Controls browsers, inspects you
 ## Installation
 
 ```bash
-npm install -g @nexor009/skillcode
+npm install -g @nexor009/skillcode@1.0.0-beta.7
+```
+
+Or run directly without installing:
+
+```bash
+npx @nexor009/skillcode@1.0.0-beta.7
 ```
 
 ## Usage
