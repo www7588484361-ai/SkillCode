@@ -1,13 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@nexor009/skillcode",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.7",
   "description": "The AI coding agent that actually does the work. Controls browsers, inspects your code, and writes tested software right inside your terminal.",
   "type": "module",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/www7588484361-ai/SkillCode.git"
+    "url": "git+https://github.com/www7588484361-ai/SkillCode.git"
   },
   "homepage": "https://github.com/www7588484361-ai/SkillCode#readme",
   "bugs": {
@@ -21,12 +21,13 @@
     "bin/skillcode.cjs",
     "bin/spacecode.cjs",
     "script/postinstall.mjs",
+    "package.json",
     "README.md",
     "LICENSE"
   ],
   "bin": {
-    "skillcode": "./bin/skillcode.cjs",
-    "spacecode": "./bin/spacecode.cjs"
+    "skillcode": "bin/skillcode.cjs",
+    "spacecode": "bin/spacecode.cjs"
   },
   "scripts": {
     "postinstall": "node ./script/postinstall.mjs",
